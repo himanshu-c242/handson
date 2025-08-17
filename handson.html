@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Hands-On Assignment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f9;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+  }
+  h1 {
+    margin-bottom: 20px;
+  }
+  .box {
+    margin: 15px auto;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    max-width: 500px;
+    text-align: left;
+  }
+  .box input {
+    padding: 8px;
+    margin: 5px 0;
+    width: 100%;
+  }
+  .box button {
+    margin-top: 8px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  .box button:hover {
+    background: #0056b3;
+  }
+  .result {
+    margin-top: 8px;
+    font-weight: bold;
+  }
+</style>
+<body>
+  <h1>JS Hands-On Questions</h1>
+
+  <!-- Q1 -->
+  <div class="box">
+    <b>1. Check divisibility by 6 and 9</b><br>
+    <input type="number" id="num1" placeholder="Enter a number">
+    <button onclick="checkDivisible()">Check</button>
+    <div class="result" id="res1"></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="box">
+    <b>2. Voting Eligibility</b><br>
+    <input type="number" id="age" placeholder="Enter age">
+    <button onclick="checkVote()">Check</button>
+    <div class="result" id="res2"></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="box">
+    <b>3. Relation between X and Y</b><br>
+    <input type="number" id="x" placeholder="Enter X">
+    <input type="number" id="y" placeholder="Enter Y">
+    <button onclick="checkRelation()">Check</button>
+    <div class="result" id="res3"></div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="box">
+    <b>4. Grading System (out of 50)</b><br>
+    <input type="number" id="marks" placeholder="Enter marks">
+    <button onclick="checkGrade()">Check</button>
+    <div class="result" id="res4"></div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="box">
+    <b>5. Character Table Lookup</b><br>
+    <input type="text" id="char" placeholder="Enter character (P,Z,E,D)">
+    <button onclick="checkChar()">Check</button>
+    <div class="result" id="res5"></div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="box">
+    <b>6. Largest among 3 numbers</b><br>
+    <input type="number" id="a" placeholder="Enter first number">
+    <input type="number" id="b" placeholder="Enter second number">
+    <input type="number" id="c" placeholder="Enter third number">
+    <button onclick="checkLargest()">Check</button>
+    <div class="result" id="res6"></div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="box">
+    <b>7. Second Smallest among 3 numbers</b><br>
+    <input type="number" id="p" placeholder="Enter first number">
+    <input type="number" id="q" placeholder="Enter second number">
+    <input type="number" id="r" placeholder="Enter third number">
+    <button onclick="checkSecondSmallest()">Check</button>
+    <div class="result" id="res7"></div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="box">
+    <b>8. Type of Triangle (by angles)</b><br>
+    <input type="number" id="A" placeholder="Enter first angle">
+    <input type="number" id="B" placeholder="Enter second angle">
+    <input type="number" id="C" placeholder="Enter third angle">
+    <button onclick="checkTriangle()">Check</button>
+    <div class="result" id="res8"></div>
+  </div>
+
+  <script> 
+    // 1. Divisible by 6 and 9
+function checkDivisible() {
+  let num = parseInt(document.getElementById("num1").value);
+  let res = (num % 6 === 0 && num % 9 === 0) ? "Divisible by both 6 and 9" : "Not divisible by both 6 and 9";
+  document.getElementById("res1").innerText = res;
+}
+
+// 2. Voting eligibility
+function checkVote() {
+  let age = parseInt(document.getElementById("age").value);
+  let res = (age >= 18) ? "Eligible to vote" : "Not eligible to vote";
+  document.getElementById("res2").innerText = res;
+}
+
+// 3. Relation between X and Y
+function checkRelation() {
+  let X = parseInt(document.getElementById("x").value);
+  let Y = parseInt(document.getElementById("y").value);
+  let res = (X < Y) ? "X is smaller than Y" : (X > Y) ? "X is greater than Y" : "X is equal to Y";
+  document.getElementById("res3").innerText = res;
+}
+
+// 4. Grading system
+function checkGrade() {
+  let M = parseInt(document.getElementById("marks").value);
+  let res;
+  switch (true) {
+    case (M <= 10): res = "E"; break;
+    case (M <= 20): res = "D"; break;
+    case (M <= 30): res = "C"; break;
+    case (M <= 40): res = "B"; break;
+    case (M <= 50): res = "A"; break;
+    default: res = "Invalid marks";
+  }
+  document.getElementById("res4").innerText = res;
+}
+
+// 5. Character Table
+function checkChar() {
+  let ch = document.getElementById("char").value;
+  let res;
+  switch (ch) {
+    case 'P': res = "PrepBytes"; break;
+    case 'Z': case 'z': res = "Zenith"; break;
+    case 'E': res = "Expert Coder"; break;
+    case 'D': res = "Data Structure"; break;
+    default: res = "Invalid Input";
+  }
+  document.getElementById("res5").innerText = res;
+}
+
+// 6. Largest among 3 numbers
+function checkLargest() {
+  let a = parseInt(document.getElementById("a").value);
+  let b = parseInt(document.getElementById("b").value);
+  let c = parseInt(document.getElementById("c").value);
+  let res = (a === b && b === c) ? "All are same" : Math.max(a, b, c);
+  document.getElementById("res6").innerText = res;
+}
+
+// 7. Second smallest integer
+function checkSecondSmallest() {
+  let p = parseInt(document.getElementById("p").value);
+  let q = parseInt(document.getElementById("q").value);
+  let r = parseInt(document.getElementById("r").value);
+  let arr = [p, q, r].sort((a, b) => a - b);
+  document.getElementById("res7").innerText = arr[1];
+}
+
+// 8. Triangle type by angles
+function checkTriangle() {
+  let A = parseInt(document.getElementById("A").value);
+  let B = parseInt(document.getElementById("B").value);
+  let C = parseInt(document.getElementById("C").value);
+  let res;
+  if (A + B + C !== 180) res = "Not a triangle";
+  else if (A < 90 && B < 90 && C < 90) res = "Acute Triangle";
+  else if (A === 90 || B === 90 || C === 90) res = "Right Triangle";
+  else res = "Obtuse Triangle";
+  document.getElementById("res8").innerText = res;
+}
+
+  </script>
+</body>
+</html>
